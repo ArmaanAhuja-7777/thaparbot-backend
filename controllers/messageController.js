@@ -2,10 +2,10 @@ const { Message } = require("../models/messagesModel");
 
 async function saveMessage(req, res) {
   try {
-    const { user_id, messageBySender, messageByBot, chat_session_id } = req.body;
+    const { user_id, messageBySender, messageByBot } = req.body;
     
     // Check if a conversation exists for this user and session
-    let conversation = await Message.findOne({ user_id, chat_session_id });
+    let conversation = await Message.findOne({ user_id });
 
     if (!conversation) {
       // If no conversation exists, create a new one
@@ -18,7 +18,7 @@ async function saveMessage(req, res) {
             timestamp: new Date(),
           },
         ],
-        chat_session_id,
+      
       });
       await conversation.save();
     } else {

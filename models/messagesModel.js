@@ -10,7 +10,6 @@ const messageSchema = new mongoose.Schema(
         timestamp: { type: Date, default: Date.now },  // When the message was sent
       },
     ],
-    chat_session_id: { type: String, required: false },  // Group messages by a session
   },
   { timestamps: true, collection: "Messages" }
 );
