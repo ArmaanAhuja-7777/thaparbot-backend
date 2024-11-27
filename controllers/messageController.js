@@ -44,11 +44,11 @@ async function saveMessage(req, res) {
 
 async function getMessages(req, res) {
   // Destructure user_id and chat_session_id from the request body
-  const { user_id, chat_session_id } = req.body; // Accepting data in the request body
+  const { user_id } = req.body; // Accepting data in the request body
   
   try {
     // Search for the conversation based on user_id and chat_session_id
-    const conversation = await Message.findOne({ user_id, chat_session_id });
+    const conversation = await Message.findOne({ user_id });
     
     if (!conversation) {
       // If no conversation is found, return a 404 error
